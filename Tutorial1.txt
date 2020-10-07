@@ -1,0 +1,50 @@
+//Problem 1:
+public interface Condition <T> {
+boolean test (T data);
+boolean even (T data);
+}
+
+public class Utils{
+	public static <T> int search(T [] data, int n, Condition <T> cond) {
+		for(int i =0;i<n;i++) {
+			if(cond.test(data[i]))
+				return i;
+		}
+		return -1;
+	}
+	public class Even  implements Condition<Integer>{
+	public boolean even(T data) {
+	return data%2==0;
+	}
+	}
+	public static  <T> int searchEven(Integer [] data, int n) {
+		Even e = new Even();
+		for(int i =0;i<n;i++) {
+			if(e.even(data[i]))
+				return data[i];
+		}
+		return -1;
+	}
+}
+//problem 2:
+public static void reverseArray(int [] array,int add,int sub) {
+//add should be the first element in the array
+//sub should be the last element in the array
+	if(index>=sub)
+		return;
+	int temp = array[add];
+	array[add] = array[sub];
+	array[sub] = temp;
+	
+	reverseArray(array,add+1,sub-1);
+}	
+public static boolean isIncreasing(int [] array,int i, int j) {
+//i should be the first index
+//j should be the second index
+	if(j+1==array.length())
+		return true;
+	
+	if(array[i]>array[j])
+		return false;
+	isIncreasing(array,i+1,j+1);}
+}
